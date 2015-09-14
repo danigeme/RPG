@@ -9,7 +9,7 @@ namespace RPG
     public class Wizard : Engine
     {
 
-        //initializing variables (?)
+        //initializing variables
         public Wizard()
         {
             Id = 0;
@@ -23,9 +23,7 @@ namespace RPG
             WeaponsW[3] = "Potions"; 
 
         }
-
-     
-        
+ 
         //Variables of "Engine.cs" Interface
         public  int Id { get; set; }
 
