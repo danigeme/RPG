@@ -21,6 +21,8 @@ namespace RPG
 
             void Attack(string Weapon1,string Weapon2);
 
+            void SpecialAttack(string Weapon, int count);
+
 
     }
 }

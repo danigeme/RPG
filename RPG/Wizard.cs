@@ -58,19 +58,54 @@ namespace RPG
 
         //Methods of "Engine.cs" Interface
         public void ChooseWeapon(){
-            Console.WriteLine("Choose a Weapon for your "+ Hero+":\n" + "1.- " + WeaponsW[0] + "\n" + "1.- " + WeaponsW[1] + "\n" + "1.- " + WeaponsW[2] + "\n" + "1.- " + WeaponsW[3] + "\n");
+            Console.WriteLine("Choose a Weapon for your "+ Hero+":\n" + "1.- " + WeaponsW[0] + "\n" + "2.- " + WeaponsW[1] + "\n" + "3.- " + WeaponsW[2] + "\n" + "4.- " + WeaponsW[3] + "\n");
             Console.WriteLine("First Weapon: ");
             WeaponW1 = Int32.Parse(Console.ReadLine())-1;
+            Console.WriteLine("You've chosen: " + WeaponsW[WeaponW1] + "!");
+            Console.ReadKey();
             Console.WriteLine("Second Weapon: ");
             WeaponW2 = Int32.Parse(Console.ReadLine())-1;
+            Console.WriteLine("You've chosen: " + WeaponsW[WeaponW2] + "!");
             this.WSelected = true;
-            string Wep1 = WeaponsW[WeaponW1];
-            string Wep2 = WeaponsW[WeaponW2];
-            Attack(Wep1, Wep2);
+            Console.ReadKey();           
+            Attack(WeaponsW[WeaponW1], WeaponsW[WeaponW2]);        
+        }
+
+        public void SpecialAttack(string Weapon, int count)
+        {
+            
+            string specialA = "x";
+            string conf = "";
+
+            if (count > 3)
+            {
+                
+                Console.WriteLine("Do you want to use the special Attack? Press 'x'!");
+                conf = Console.ReadLine();
+                
+                if (specialA.Equals(conf))
+                {
+                    Console.WriteLine(Hero + " has used the special attack! of his {{" + Weapon + "}}!!!" + "\n");
+                    Console.ReadKey();
+                 }
+               
+   
+            }
+            else
+            {
+                Console.WriteLine(Hero + " has used the magic of the {{" + Weapon + "}}!!!" + "\n");
+                Console.WriteLine("Especial Attack +1!");
+                Console.ReadKey();
+               
+
+            }
+            
         
         }
 
-        public void Attack(string Weapon1, string Weapon2) { 
+
+        public void Attack(string Weapon1, string Weapon2) {
+            int count = 0;
             if(!this.WSelected){
                 Console.WriteLine("No Weapons Selected");
             }
@@ -78,16 +113,24 @@ namespace RPG
                 while(!exit){
                     Console.WriteLine("Menu\n");
 
-                    Console.WriteLine("1. Attack Opponent with {{" + WeaponsW[WeaponW1]+"}}" +"\n");
-                    Console.WriteLine("2. Attack Opponent with {{" + WeaponsW[WeaponW2] +"}}" +"\n");
-                    Console.WriteLine("0. Exit\n");                
+                    Console.WriteLine("1. Attack Opponent with {{" + Weapon1+ "}}" +"\n");
+                    Console.WriteLine("2. Attack Opponent with {{" + Weapon2 +"}}" +"\n");
+                    Console.WriteLine("0. Exit\n");
+                    Console.WriteLine("Weapon: ");
                     int opt = Int32.Parse(Console.ReadLine());
                     switch (opt) {
-                        case 0: exit = true;  
+                        case 0: 
+                            exit = true;  
                                 break;
-                        case 1: Console.WriteLine(Hero +" has attacked Opponent with {{" + WeaponsW[WeaponW1]+"}}!!!" + "\n"); 
+                        case 1:
+                                count++;
+                                SpecialAttack(Weapon1, count);
+                                if (count > 3) { count = 0; }
                                 break;
-                        case 2: Console.WriteLine(Hero + " has attacked Opponent with {{" + WeaponsW[WeaponW2] + "}}!!!" + "\n");  
+                        case 2: 
+                                count++;
+                                SpecialAttack(Weapon2, count);
+                                if (count > 3) { count = 0; }
                                 break;
                     
                                   }
