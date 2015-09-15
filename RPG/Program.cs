@@ -11,7 +11,6 @@ namespace RPG
         static void Main(string[] args)
         {
            bool exitmenu = false;
-           Wizard PWizard = new Wizard();
            while (!exitmenu)
            {
                Console.WriteLine("Menu\nChoose your player: \n");
@@ -25,12 +24,17 @@ namespace RPG
                    case 0: 
                        exitmenu = true;
                        break;
-                   case 1:                       
+                   case 1:
+                       Wizard PWizard = new Wizard();
                        PWizard.ChooseWeapon();
                        break;
-                   case 2: 
+                   case 2:
+                       Elf PElf = new Elf();
+                       PElf.ChooseWeapon();                       
                        break;
                    case 3:
+                       Warrior PWarrior = new Warrior();
+                       PWarrior.ChooseWeapon();                       
                        break;
 
                }

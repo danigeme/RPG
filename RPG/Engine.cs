@@ -9,7 +9,6 @@ namespace RPG
     interface Engine
     {
         
-            int Id { get; set; }
 
             string Hero { get; set; }
 

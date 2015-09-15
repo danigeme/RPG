@@ -12,7 +12,7 @@ namespace RPG
         //initializing variables
         public Wizard()
         {
-            Id = 0;
+           
             WeaponW1 = 0;
             WeaponW2 = 0;
             WSelected = false;
@@ -25,7 +25,6 @@ namespace RPG
         }
  
         //Variables of "Engine.cs" Interface
-        public  int Id { get; set; }
 
         public  string Hero { get; set; }
 
@@ -75,7 +74,7 @@ namespace RPG
             string specialA = "x";
             string conf = "";
 
-            if (count > 3)
+            if (count >= 3)
             {
                 
                 Console.WriteLine("Do you want to use the special Attack? Press 'x'!");
@@ -92,7 +91,7 @@ namespace RPG
             else
             {
                 Console.WriteLine(Hero + " has used the magic of the {{" + Weapon + "}}!!!" + "\n");
-                Console.WriteLine("Especial Attack +1!");
+                Console.WriteLine("Especial Attack " + count + "/3");
                 Console.ReadKey();
                
 
